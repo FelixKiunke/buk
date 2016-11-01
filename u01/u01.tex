@@ -1,0 +1,114 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[utf8x]{inputenc}
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{array}
+\newcolumntype{L}{>{$}l<{$}}
+
+%SetFonts
+
+%SetFonts
+
+
+\title{BuK – Blatt 1 – Gruppe 17}
+\author{Felix Kiunke, 357322\\Philipp Hochmann, 356148}
+\date{\vspace{-5ex}}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1.1}
+\subsection*{1.1 a)}
+ 
+$\Sigma = \{ \#, 0, 1 \}$\\
+$L_{Teilsumme} = \{ b\#M_1\#M_2\#...\#M_n | \exists T \subseteq M : \sum_{t \in T} t = b \}$\\
+wobei $b$ und $M_i$ in Bin\"ardarstellung kodiert werden.
+ 
+\subsection*{1.1 b)}
+$\Sigma = \{ \#, \checkmark, X, 0, 1 \}$\\
+$L_{Clique} = \{ b \# M | \exists $ Clique in durch M codierten Graph der Gr\"o\ss{}e von mind. b$ \}$\\
+wobei b in Bin\"ardarstellung kodiert wird und M die Adjazenzmatrix als String kodiert bezeichnet.\\
+Bsp.:
+$
+\begin{pmatrix}
+X & \checkmark & X \\
+\checkmark & X & \checkmark \\
+X & \checkmark & X \\
+\end{pmatrix}
+$ wird zu $M=X \checkmark X \# \checkmark X \checkmark \# X \checkmark X$
+
+\section*{Aufgabe 1.2}
+Gegeben die Turingmaschine $M = (Q, \Sigma, \Gamma, B, q_0, \bar{q}, \delta)$ mit
+$$
+	Q = \{q_0, q_1, \bar{q}\},
+	\Sigma = \{0, 1\},
+	\Gamma = \{0, 1, B\},
+$$
+\begin{center}
+\begin{tabular}{L|LLL}
+	\delta & 0 & 1 & B \\
+	\hline
+	q_0 & (q_0, 0, R) & (q_0, 1, R) & (q_1, B, L) \\
+	q_1 & (\bar{q}, 0, R) & (q_1, 1, L) & (q_0, B, R)
+\end{tabular}
+\end{center}
+Dann werden mit der Eingabe $w = 110$ folgende Konfigurationen erreicht:
+$$
+q_0 110 \vdash 1 q_0 10 \vdash 11 q_0 0 \vdash 110 q_0 \vdash 11 q_1 0 \vdash 110 \bar{q}
+$$
+
+\section*{Aufgabe 1.3}
+Gegeben die Turingmaschine $M = (Q, \Sigma, \Gamma, B, q_0, \bar{q}, \delta)$ mit
+$$
+	Q = \{q_0, q_1, q_2, q_3, q_4, \bar{q}\},
+	\Sigma = \{0, 1\},
+	\Gamma = \{0, 1, B\},
+$$
+\begin{center}
+\begin{tabular}{L|LLL}
+	\delta & 0 & 1 & B \\
+	\hline
+	q_0 & (q_1, 0, R) & (q_2, 1, R) & (\bar{q}, 0, N) \\
+	q_1 & (q_1, 0, R) & (q_1, 1, R) & (q_3, B, L) \\
+	q_2 & (q_2, 0, R) & (q_2, 1, R) & (q_4, B, L) \\
+	q_3 & (\bar{q}, 0, N) & (\bar{q}, 1, N) & (\bar{q}, 0, N) \\
+	q_4 & (\bar{q}, 1, N) & (\bar{q}, 0, N) & (\bar{q}, 0, N)
+\end{tabular}
+\end{center}
+Wenn das erste Zeichen der Eingabe ungleich dem letzten Zeichen derselben ist, ist die Ausgabe von $M$ $1$, ansonsten $0$.\\\\
+Von $M$ wird also die Funktion $f : \Sigma^* \rightarrow \{0, 1\}$ mit
+\[
+f(w) =
+\begin{cases}
+	0, &\text{falls } |w| < 2\\
+	v \text{ xor } u, &\text{sonst, wobei } w = vw'u \text{ mit } v, u \in \{0, 1\}
+\end{cases}
+\]
+
+\section*{Aufgabe 1.4}
+$M=(\{q_0, q_1, q_2, q_e, \overline{q} \}, \{0, 1 \}, \{0, 1, B \}, B, q_0, \overline{q}, \delta)$
+\\ \ \\
+$\delta = $
+\begin{tabular}{c|c|c|c}
+& 0 & 1 & B\\
+\hline
+$q_0$ & $(q_0, 0, R)$ & $(q_0, 1, R)$ & $(q_1, B, L)$\\
+$q_1$ & $(q_2, 0, L)$ & $(q_2, 1, L)$ & $(\overline{q}, B, N)$\\
+$q_2$ & $(q_e, 1, N)$ & $(q_2, 0, L)$ & $(\overline{q}, 1, N)$\\
+$q_e$ & $(q_e, 0, L)$ & $(q_e, 1, L)$ & $(\overline{q}, B, R)$\\
+\end{tabular}
+\\ \ \\
+Zuerst wird in $q_0$ der Lesekopf von links nach rechts zum least significant Bit bewegt.\\
+In $q_1$ wird geendet, wenn das aktuelle Symbol ein Blank ist, denn dann ist das Eingabewort $\epsilon$. Sonst wird der Lesekopf ein Symbol nach links verschoben, zum zweiten Bit von rechts, und in Zustand $q_2$ \"ubergegangen.\\
+In $q_2$ f\"ahrt der Lesekopf von rechts nach links das Eingabewort ab und negiert die Bits (Addition von 1), bis kein \"Uberlauf mehr stattfindet. Ein Blank wird als 0 gewertet, f\"ur den Fall, dass die Aufgabe ein Symbol l\"anger ist, als die Eingabe.\\
+In Zustand $q_e$ wird der Lesekopf zur\"uck nach links bewegt, damit die Ausgabe vollst\"andig ist.\\
+Da ab dem zweitniedrigsten Bit mit 1 addiert wird, entspricht das Ergebnis der Addition mit 10, also dezimal 2.
+
+\end{document}  
