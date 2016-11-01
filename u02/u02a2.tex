@@ -1,1 +1,13 @@
-Bitte Aufgabe 2 einfügen :)
+Angenommen, $\mathcal{M}$ hält. Das heißt, das während der Ausführung keine
+Konfiguration doppelt angenommen werden kann. Würde eine Konfiguration doppelt
+vorkommen, würde $\mathcal{M}$ nicht halten (Analog Pumping Lemma). Insbesondere
+wird die Anfangskonfiguration nicht wieder angenommen. Es gilt also, die Anzahl
+der Konfigurationen zu berechnen, um eine obere Schranke der Schritte, die
+$\mathcal{M}$ macht, angeben zu können.
+
+Die Anzahl der Schritte kann genau mit der Formel
+\[(|Q| - 1) \cdot |\Gamma|^{s(n)} \cdot s(n) + 1\]
+berechnet werden.
+
+Anzahl der Zustände ohne Endzustand $\times$ Anzahl der Bandbelegung $\times$
+Anzahl der Lesekopfpositionen + 1 (für den Schritt in den Endzustand)
