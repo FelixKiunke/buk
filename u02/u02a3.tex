@@ -1,10 +1,84 @@
 Sei $L = \{w\#w\ |\ w \in \{0, 1\} ^{\ast}\}$ über $\Sigma = \{0, 1, \#\}$.
-Dann folgt der Rest der Aufgabe triviell.
 
 \aufgabenteil{(a)}
 
-Teil (a) hier
+Wir konstruieren die Turingmaschine $M = (Q, \Sigma, \Gamma, B, q_0, \bar{q},
+	\delta)$ mit
+\begin{align*}
+	\Sigma &= \{0, 1, \#\}, \\
+	\Gamma &= \{0, 1, \#, B\}.
+\end{align*}
+
+Die Turingmaschine operiert folgendermaßen (High-Level-Beschreibung folgt weiter
+unten):
+
+\begin{enumerate}
+	\item Lies und merke (im Zustand) das erste Zeichen $a$ und ersetze es dann
+		durch $B$
+	\item Gehe nach rechts, bis ein $\#$ oder ein $B$ erreicht wird. Wird zuerst
+		ein	$B$ erreicht, schreibe $0$ und gehe in den Endzustand $\bar{q}$ über
+	\item Gehe weiter nach rechts, bis zum ersten Zeichen, dass kein $\#$ ist
+	\item Wenn das Zeichen dem Zeichen $a$ nicht entspricht, schreibe $0$ und
+		gehe in den Endzustand $\bar{q}$ über
+	\item Wenn das Zeichen ein $b$ ist und $a$ ein $\#$ ist, schreibe $1$ und
+		gehe in den Endzustand $\bar{q}$ über
+	\item Ansonsten schreibe $\#$ und gehe einen Schritt nach rechts
+	\item Lies und merke (im Zustand) das Zeichen $b$ und ersetze es durch $\#$
+	\item Gehe nach links bis zum ersten $B$ und dann einen Schritt nach rechts
+	\item Wenn das Zeichen dem gemerkten Zeichen $b$ nicht entspricht, schreibe
+		$0$ und gehe in den Endzustand $\bar{q}$ über
+	\item Ansonsten schreibe $B$ und gehe einen Schritt nach rechts.
+	\item Fahre fort mit Schritt 1
+\end{enumerate}
+
+\textbf{High-Level-Beschreibung:} Die Maschine merkt sich immer ein Zeichen in
+Form verschiedener Zustände und vergleicht es dann mit dem entsprechenden
+Zeichen auf der anderen Seite des $\#$. Jedes gelesene Zeichen wird links durch
+ein $B$ und rechts durch ein $\#$ ersetzt. Das erleichtert es, einen möglichst
+kurzen Weg zurückzulegen. Außerdem wird, bevor der „Rückweg“ gegangen wird, das
+jeweils nächste Zeichen (einen Schritt weiter rechts) eingelesen, um weitere
+Strecken zu vermeiden. Wenn die Zeichen nicht übereinstimmen oder ein sonstiger
+ungültiger Fall (z.B. kein $\#$ im Wort, unterschiedliche Längen des linken und
+rechten Teils, \dots) auftritt, wird sofort $0$ geschrieben und abgebrochen,
+also das Wort abgelehnt.
+
+\textbf{Analyse:} Da die Turingmaschine nur auf dem Eingabewort operiert und
+maximal eine Zelle rechts davon verwendet, ist der Speicherbedarf
+$\mathcal{O}(n)$ mit $n = \text{Länge des Eingabewortes}$.
+
+Um die Buchstaben links und rechts des $\#$ zu vergleichen, bewegt sich der
+Lesekopf alle zwei Zeichen um $\left \lceil{\frac{n}{2}}\right \rceil$. Da die
+konstanten Faktoren von der $\mathcal{O}$-Notation „verschluckt“ werden, diese
+Bewegung des Lesekopfs aber proportional oft zur Zeichenanzahl ausgeführt wird,
+ist der Zeitbedarf $\mathcal{O}(n^2)$.
 
 \aufgabenteil{(b)}
 
-Teil (b) hier
+Wir konstruieren eine 2-Band-Turingmaschine, die folgendermaßen funktioniert:
+
+\begin{enumerate}
+	\item Lies die Zeichen der Eingabe von links nach rechts ein, bis entweder
+		$\#$ oder $B$ gelesen wird. Schreibe dabei jedes gelesene Zeichen (außer
+		dem zuletzt gelesenen) von links nach rechts auf das zweite Band
+	\item Wenn ein $B$ erreicht wurde, schreibe $0$ aufs erste Band und gehe in
+		den Endzustand über
+	\item Ansonsten gehe auf dem ersten Band einen Schritt nach rechts. Wenn
+		dort ein $\#$ steht, ist die Eingabe ungültig. Schreibe dann $0$ und
+		gehe in den Endzustand über
+	\item Gehe auf dem zweiten Band nach links bis zum ersten $B$ und gehe dann
+		wieder einen Schritt nach rechts
+	\item Vergleiche die Zeichen auf beiden Bändern. Unterscheiden sie sich,
+		schreibe sofort $0$ aufs erste Band und gehe in den Endzustand über.
+		Sind beide Zeichen $B$, schreibe $1$ aufs erste Band und gehe in den
+		Endzustand über (dann ist das Wort in $L$). Gehe einen Schritt nach
+		rechts und wiederhole dies bis ein Endzustand erreicht wird
+\end{enumerate}
+
+\textbf{Analyse:} Die 2-Band-Maschine braucht nur den Platz, den das Eingabewort
+braucht, und auf dem zweiten Band zusätzlich maximal ebensoviel Platz (wenn das
+Wort kein $\#$ enthält). Der Speicherbedarf ist also $2n$ bzw. $\mathcal{O}(n)$
+mit $n = \text{Länge des Eingabewortes}$.
+
+Der Zeitbedarf für Schritt 1-3 ist im Worst Case $\mathcal{O}(n)$. Das
+Zurückgehen in Schritt 4 ist ebenfalls $\mathcal{O}(n)$. Gleiches gilt für den
+Vergleich in Schritt 5. Damit ist der Gesamtzeitbedarf $\mathcal{O}(n)$.
