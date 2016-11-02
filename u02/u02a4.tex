@@ -1,1 +1,15 @@
-Hier Aufgabe 2.4!
+An der 0. Position des Bandes, also ganz links vom Eingabewort, steht ein
+Sentinel-Element, welches den Zugriff auf das Band regelt, es sozuagen nach
+links absperrt. Man simuliert die linke Seite nun über das kartesische Produkt
+(die resultierende TM ist eine Zweispurmaschine): Jede Zelle des Bandes rechts
+vom Sentinel-Element enthalte ein Tupel. Links davon sind nur Blanks. Der erste
+Eintrag ist das Element auf dem rechten Teil des Bandes, der zweite das Element,
+was spiegelbildlich auf der linken Seite stehen würde. Die Turingmaschine
+speichert über zwei Zustände, ob gerade auf dem ersten oder zweiten Element des
+Tupels operiert wird. Wird der Lesekopf auf das Sentinel-Element geschoben, wird
+er direkt wieder nach rechts auf das erste richtige Symbol geschoben. Dabei wird
+in den jeweils anderen Zustand übergegangen, da nun die jeweils mit den anderen
+Elementen der Tupel gearbeitet werden muss. Dadurch wird ein Übergang auf die
+andere Bandhälfte simuliert.
+
+Dabei entsteht kein Zeitverlust.
