@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sheet=$(dirname $1)
+sheet=$1
 sheetnum=$(echo "$sheet" | sed 's/^u0//' | sed 's/^u//')
 
 exs=$(ls "$sheet" | grep 'u[0-9][0-9]a[0-9]' | sed 's/^.*a//' | sed 's/\.tex$//')
@@ -18,3 +18,6 @@ done
 sed -i "/% EXERCISES/r $sheet/tmp.tex" $sheet/$sheet.tex
 
 rm "$sheet/tmp.tex"
+
+cd $sheet
+pdflatex "$sheet.tex"
