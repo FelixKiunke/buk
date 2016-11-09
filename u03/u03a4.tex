@@ -1,0 +1,25 @@
+\aufgabenteil{(a)}
+Diese Sprache ist entscheidbar.
+
+Um sie zu entscheiden, konstruiert man eine modifizierte Universelle
+Turingmaschine, die $M$ auf der Eingabe $w$ ausführt und auf einem weiteren Band
+die Schritte mitzählt (zum Beispiel indem dieser Lesekopf bei jedem Schritt um
+eine Stelle nach rechts bewegt wird).
+Wenn der Endzustand von $M$ erreicht wird, schreibt die Universelle Maschine $1$
+aufs erste Band und geht ihrerseits in den Endzustand über. Wenn vorher der 42.
+Schritt gezählt wird, schreibt sie $0$ aufs erste Band und endet. Damit ist die
+Sprache in endlich vielen Schritten entschieden. \hfill$\square$
+
+\aufgabenteil{(b)}
+Diese Sprache ist nicht entscheidbar.
+
+Wenn es eine Maschine gäbe, die entscheidet, ob $M$ nach mindestens 42 Schritten
+auf der Eingabe hält, so könnte diese auch das allgemeine Halteproblem
+entscheiden. Dazu würde man zur zu untersuchenden Maschine $M'$ eine weitere
+Maschine $M''$ konstruieren, die erst 42 „no-op“-Schritte ausführt und
+anschließend in den Startzustand von $M'$ übergeht. Damit könnte das allgemeine
+Halteproblem gelöst werden.
+
+Da das Halteproblem nach VL nicht lösbar ist, ist dies ein Widerspruch. Somit
+kann eine solche Maschine, die $H_{\geq 42}$ entscheidet, nicht existieren.
+\hfill$\square$

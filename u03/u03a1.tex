@@ -1,0 +1,9 @@
+\begin{enumerate}
+\item Prüfe, ob Wort der Form $0^n 1^m$ (Aufwand: n Schritte). Wenn nicht, verwerfe.
+\item Solange mindestens eine unmarkierte 0 und eine unmarkierte 1 auf dem Band sind:\\
+	Markiere jede zweite 0 und jede zweite 1. (Aufwand: n)\\
+	Prüfe, ob Anzahl unmarkierter Symbole gerade. Wenn nicht, verwerfe. (Aufwand: n)
+\item Sind alle Symbole markiert? Wenn nicht: verwerfe, sonst akzeptiere. (Aufwand: n)\\
+	Die Schleife kann höchstens $log(n)$ mal laufen, da die Anzahl Symbole bei jedem Durchlauf halbiert wird.
+	Deshalb ist die Gesamtzahl der Arbeitsschritte in $\mathcal{O}(n \cdot log(n))$
+\end{enumerate}

@@ -1,0 +1,30 @@
+Um die Abzählbarkeit von $\mathbb{N}^*$ zu zeigen, zeigen wir zunächst, dass für
+eine gegebene Länge $n$ die Menge der Wörter dieser Länge $\mathbb{N}^n$
+abzählbar ist.
+
+Für $n=0$ ist die Menge der Wörter offensichtlich $\{\varepsilon\}$.
+
+Für $n=1$ ist die Menge der Wörter einfach $\mathbb{N}$. Per Induktion
+konstruieren wir für alle $n \ge 1$ die entsprechenden Wortmengen. Dabei
+verwenden wir das Diagonalverfahren, das auch zum Beweis der Abzählbarkeit der
+rationalen Zahlen verwendet werden kann. Wie bei den rationalen Zahlen
+konstruieren wir also eine Aufzählung auf das kartesische Produkt
+$\mathbb{N}\times\mathbb{N}$. Der erste Eintrag der entstehenden Tupel
+$(x, i)$ ist jeweils eine neue Stelle, während der zweite Eintrag für das
+$i$-te Wort der Menge $\mathbb{N}^{n-1}$ steht. Das entstehende Wort ist also
+die Konkatination von $x$ und dem $i$-ten nächstkürzeren Wort. Das funktioniert,
+da $\mathbb{N}^{n-1}$ wegen der Induktion ebenfalls abzählbar ist. Die genaue
+Abzählreihenfolge ist dabei beliebig.
+
+Um zu zeigen, dass die Vereinigung dieser (jeweils abzählbaren) Mengen ebenfalls
+abzählbar ist, verwenden wir erneut das Diagonalverfahren und konstruieren
+wieder eine Aufzählung für $\mathbb{N}\times\mathbb{N}$. Hierbei steht der erste
+Eintrag der Tupel der Form $(n, i)$ dieses kartesischen Produktes für die 
+Länge $n$ der Wörter. Der zweite Eintrag steht für das $i$-te Wort in
+$\mathbb{N}^n$, was ja wie oben gezeigt abzählbar ist. Eine Ausnahme muss bei
+$n = 0$ gemacht werden, da diese $\mathbb{N}^0$ ja $1$-elementig ist. Daher
+steht dort jedes $i$ für das leere Wort. Die genaue Zählreihenfolge dieser
+Konstruktion ist auch hier egal.
+
+Damit haben wir eine Art der Abzählung von $\mathbb{N}^*$ definiert. Also ist
+diese Menge abzählbar. \hfill$\square$
