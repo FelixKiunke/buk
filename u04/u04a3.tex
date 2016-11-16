@@ -1,0 +1,47 @@
+\aufgabenteil{(a)}
+Idee: Unterprogrammtechnik, zuerst wird $w$ geschrieben, dann Kopf zurückgesetzt, dann $M$ ausgeführt. Formal:
+\begin{align*}
+	M &= (Q_M, \{0, 1\}, \Gamma, \delta_M, q_{0_M}, B, \bar{q})\\
+	M_w^* &= (Q_w \cup Q_M, \{0, 1\}, \Gamma, \delta \cup \delta_M, q_0, B, \bar{q})
+\end{align*}
+wobei
+\[
+	Q_w = \{q_1 \dots q_n\} \text{ für } w = w_1w_2w_3\dots w_n
+\]
+und
+\[
+	\begin{tabular}{c|c}
+		$\delta$ & B\\
+		\hline
+		$q_i$ & $(q_{i+1}, w_i, R)$
+	\end{tabular}
+	\ \forall i \in [1, n - 1] \subseteq \mathbb{N},
+\]
+\[
+	\begin{tabular}{c|c|c|c}
+		$\delta$ & 0 & 1 & B\\
+		\hline
+		$q_n$ & $(q_{0_M}, 0, N)$ & $(q_{0_M}, 1, N)$ & $(q_{0_M}, B, N)$
+	\end{tabular}
+\]
+
+
+\aufgabenteil{(b)}
+Idee: Gödelnummer um Übergänge ergänzen, die vorher $w$ schreiben.
+
+$N$ sei eine Zweibandmaschine. Im ersten Band steht $\langle M_k \rangle$, im
+zweiten $w$, was mit einer einfachen Vorverarbeitung des Eingabewortes geschehen
+kann. Nun fängt $N$ an, $w$ Zeichen für Zeichen durchzugehen, und hinter dem
+einleitenden $111$ der Original-Nummer auf Band 1 folgendes zu schreiben: bei
+$w_i=X_j$, wobei $X_1=0, X_2=1, X_3=B$, schreibe $0^i10^j10^{i+1}10^j1000$. Dies
+entspricht dem Gödel-Code von $q_i$ nach $q_{i+1}$, wobei das eingelesene
+Zeichen geschrieben wird und der Lesekopf nach rechts bewegt wird. Diese Codes
+müssen natürlich durch $11$ getrennt werden.
+
+Ist $w$ auf Band 2 komplett
+durchlaufen, müssen die alten Zustandsnummern der restlichen Gödelnummer erhöht
+werden, weil sich durch das Hinzufügen neuer Zustände die Nummerierung geändert
+hat. Dies macht man, indem man immer bei jedem Zustand so viele Nullen
+hinzufügt, wie man vorher neue Zustände eingeführt hat ($n$ Stück plus die, die
+man braucht, den Lesekopf wieder zurückzuschieben). Das Endergebnis steht dann
+auf Band 1.
