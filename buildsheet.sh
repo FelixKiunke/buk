@@ -3,7 +3,7 @@
 sheet=$1
 sheetnum=$(echo "$sheet" | sed 's/^u0//' | sed 's/^u//')
 
-exs=$(ls "$sheet" | grep 'u[0-9][0-9]a[0-9]' | sed 's/^.*a//' | sed 's/\.tex$//')
+exs=$(ls "$sheet" | grep 'u[0-9][0-9]a[0-9].tex' | sed 's/^.*a//' | sed 's/\.tex$//')
 
 cp template.tex $sheet/$sheet.tex
 
