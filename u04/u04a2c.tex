@@ -1,0 +1,24 @@
+Zu zeigen oder widerlegen: $\mathbf{L}_\mathbb{P}$ ist entscheidbar.
+
+\begin{proof}[\unskip\nopunct]
+Widerlegung mit Satz von Rice:
+
+Sei \(\mathcal{S}_3 = \{f_M \mid \forall w \in \{0, 1\}^* : f_M(w) =
+	\begin{cases}
+		1, & \text{falls } w \in \mathbb{P}\\
+		0, & \text{sonst}
+	\end{cases}
+	\}
+	\)
+
+Dann ist
+\begin{align*}
+	L(\mathcal{S}_3) &= \{ \langle M \rangle \mid M \text{ berechnet eine Funktion
+		aus $\mathcal{S}_3$} \} \\
+	&= \{ \langle M \rangle \mid L(M) = \mathbb{P} \}
+\end{align*}
+
+Nach dem Satz von Rice ist damit $\mathbf{L}_\mathbb{P}$ nicht entscheidbar (das
+liegt daran, dass für eine Maschine $M$, die auf einigen oder allen Eingaben
+nicht hält, nicht entschieden werden kann, ob $L(M) = \mathbb{P}$ ist).
+\end{proof}

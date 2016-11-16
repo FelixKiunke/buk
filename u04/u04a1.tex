@@ -1,0 +1,26 @@
+
+Man konstruiere eine unendliche Matrix $(A_{i, j})_{i \in \mathbb{N}, j \in \mathbb{N}}$ mit
+\begin{center}
+$A_{i, j} = 
+\begin{cases}
+     1 & \text{falls $M_i$ $\langle M_j \rangle$ akzeptiert} \\
+     0 & \text{sonst} \\
+\end{cases}
+$
+\end{center}
+Angenommen, es existiert eine Turingmaschine $M_k$, die $L_{self} =
+	\{\langle M \rangle \text{ | $M$ verwirft $\langle M \rangle$}\}$ erkennt.
+Dann gilt:
+\begin{center}
+$
+\begin{aligned}
+\text{1. Fall: } &A_{k, k} = 0 \overset{\text{Def. A}}{\implies} \text{$M_k$ akzeptiert $\langle M_k \rangle$ nicht} \implies\\
+& \langle M_k \rangle \in L_{self} \implies \text{$M_k$ akzeptiert $\langle M_k \rangle$} \implies A_{k, k} = 1
+\\\\
+\text{2. Fall: } &A_{k, k} = 1 \overset{\text{Def. A}}{\implies} \text{$M_k$ akzeptiert $\langle M_k \rangle$} \implies\\
+& \langle M_k \rangle \notin L_{self} \implies \text{$M_k$ akzeptiert $\langle M_k \rangle$ nicht} \implies A_{k,k} = 0
+\end{aligned}
+$
+\end{center}
+Dies führt zum Widerspruch, $M_k$ kann also nicht existieren.
+Damit ist $L_{self}$ nicht entscheidbar.

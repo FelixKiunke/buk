@@ -1,0 +1,26 @@
+Zu zeigen oder widerlegen: $\mathbf{L}_\text{comp}$ ist entscheidbar.
+
+\begin{proof}[\unskip\nopunct]
+Widerlegung mit Satz von Rice:
+
+Wähle $M_2$ beliebig aber fest. Sei dann
+\[
+	\mathcal{S}_4 = \{f_M \mid \forall w \in \{0, 1\}^* : f_M(w) =
+		\begin{cases}
+			1, & \text{falls } w \not\in L(M_2) \\
+			0, & \text{sonst}
+		\end{cases}
+		\}
+\]
+
+Dann ist
+\begin{align*}
+	L(\mathcal{S}_3) &= \{ \langle M \rangle \mid M \text{ berechnet eine
+		Funktion aus $\mathcal{S}_4$} \} \\
+	&= \{ \langle M \rangle \mid L(M) = \overline{L(M_2)} \}
+\end{align*}
+
+Nach dem Satz von Rice ist damit $\mathbf{L}_{comp}$ für beliebige $M_2$ nicht
+entscheidbar, also ist das Problem insgesamt ebenfalls nicht entscheidbar.
+
+\end{proof}

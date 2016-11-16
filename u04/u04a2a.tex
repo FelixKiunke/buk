@@ -1,0 +1,15 @@
+Zu zeigen oder widerlegen: $\mathbf{H}_\text{never}$ ist entscheidbar.
+
+\begin{proof}[\unskip\nopunct]
+Widerlegung mit Satz von Rice:
+
+Sei $\mathcal{S}_1 = \{f_M \mid \forall w \in \{0, 1\}^\ast : f_M(w) = \bot\}$.
+
+Dann ist
+\begin{align*}
+	L(\mathcal{S}_1) &= \{ \langle M \rangle \mid M \text{ berechnet eine
+		Funktion aus $\mathcal{S}_1$}\} \\
+	&= \{ \langle M \rangle \mid M \text{ hält auf keiner Eingabe}\}
+\end{align*}
+Nach dem Satz von Rice ist $\mathbf{H}_\text{never}$ damit nicht entscheidbar.
+\end{proof}
