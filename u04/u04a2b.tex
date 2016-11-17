@@ -1,5 +1,18 @@
 Zu zeigen oder widerlegen: $\mathbf{S}_{15}$ ist entscheidbar.
 
 \begin{proof}[\unskip\nopunct]
-Keine Ahnung :(
+	Angenommen, $q_{15}$ ist Endzustand.
+
+	Dann lässt sich zu einer beliebigen Gödelnummer $\langle M \rangle$ eine
+	Turingmaschine $M'$ konstruieren, die zuerste die Eingabe $101$ vom Band
+	löscht und anschließend $\langle M \rangle$ normal ausführt (analog zur
+	Universellen TM). Damit verhält sich $M'$ auf $101$ so wie $M$ auf
+	$\varepsilon$.
+
+	Wenn $\mathcal{S}_{15}$ nun existieren würde, könnte man es auf $M'$
+	anwenden. Da man damit wüsste, ob $M'$ den Endzustand $q_{15}$ erreicht,
+	wüsste man, ob die Maschine hält und hätte somit das spezielle Halteproblem
+	$H_\varepsilon$ gelöst. Dieses ist jedoch, wie in der Vorlesung gezeigt
+	wurde, nicht entscheidbar. Durch diesen Widerspruch ist also auch
+	$\mathcal{S}_{15}$ nicht entscheidbar.
 \end{proof}
