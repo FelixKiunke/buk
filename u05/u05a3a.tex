@@ -10,7 +10,7 @@ Diese Sprache ist nicht entscheidbar, also \textbf{nicht rekursiv}.
 mit dem Satz von Rice. Sei 
 \[
 \mathcal{S} = \{f_M \mid \exists (w_1, w_2) \in \{0,1\}^* \times \{0,1\}^*,
-	|w_1| \leq 62, |w_2| \leq 62 : f_M(w_1) = 1 \land f_M(w_2) = 1\}
+	|w_1| \leq 62, |w_2| \leq 62, w_1 \neq w_2 : f_M(w_1) = 1 \land f_M(w_2) = 1\}
 \]
 
 Dann ist $\mathcal{S}$ nicht leer, denn eine passende Funktion $f_M$ existiert,
@@ -46,6 +46,6 @@ möglichen Gödelnummern der Länge $i'$ ausführt. Jede Ausgabe von $A$ wird au
 von $A'$ ausgegeben. Damit gibt $A'$ alle Gödelnummern aus der Sprache $A_{62}$
 aus.
 
-Da die Konstruktion eines Aufzählers möglich ist, ist $A_{62}$ rekursiv
-aufzählbar.
+	Dieser Aufzähler gibt dann genau $A_{62}$ aus. Da die Konstruktion eines
+	Aufzählers möglich ist, ist $A_{62}$ rekursiv aufzählbar.
 \end{proof}
