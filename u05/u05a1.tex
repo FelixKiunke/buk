@@ -1,21 +1,23 @@
 \aufgabenteil{(a)}
-$
-\begin{aligned}
-&L_1 \leq L_2 \wedge L_2 \leq L_3\\
-\Leftrightarrow \quad &(\exists f: x \in L_1 \Leftrightarrow f(x) \in L_2) \wedge (\exists g: x \in L_2 \Leftrightarrow g(x) \in L_3)\\
-\end{aligned}
-$
-\\ \ \\
-Also existiert eine solche Funktion $h(x)=f(g(x))$ wenn $f$ und $g$ existieren, für die gilt:\\
-$ x \in L_1 \Leftrightarrow f(x) \in L_2 \Leftrightarrow h(x) \in L_3$
+\begin{align*}
+	&L_1 \leq L_2 \wedge L_2 \leq L_3 \\
+	\iff \quad &(\exists f: x \in L_1 \iff f(x) \in L_2) \land
+		(\exists g: x \in L_2 \iff g(x) \in L_3)\\
+\end{align*}
+
+Also existiert eine solche Funktion $h(x)=f(g(x))$, wenn $f$ und $g$ existieren,
+für die gilt:
+\[
+x \in L_1 \iff f(x) \in L_2 \iff h(x) \in L_3
+\]
 
 \aufgabenteil{(b)}
-zu zeigen: \quad$(L_1 \leq L_2) \implies (\overline{L_1} \leq \overline{L_2})\\ \ \\
-\begin{aligned}
-& &&L_1 \leq L_2\\
-&\Leftrightarrow &&\exists f: x \in L_1 \Leftrightarrow f(x) \in L_2\\
-&\implies &&\exists f: \neg (x \in L_1) \Leftrightarrow \neg (f(x) \in L_2)\\
-&\implies && \exists f: x \notin L_1 \Leftrightarrow f(x) \notin L_2\\
-&\implies && \exists f: x \in \overline{L_1} \Leftrightarrow f(x) \in \overline{L_2}\\
-&\implies && \overline{L_1} \leq \overline{L_2}
-\end{aligned}$
+zu zeigen: \quad$(L_1 \leq L_2) \implies (\overline{L_1} \leq \overline{L_2})$
+\begin{align*}
+	&L_1 \leq L_2\\
+	\iff &(\exists f: x \in L_1 \iff f(x) \in L_2)\\
+	\implies &(\exists f: \neg (x \in L_1) \iff \neg (f(x) \in L_2))\\
+	\implies &(\exists f: x \notin L_1 \iff f(x) \notin L_2)\\
+	\implies &(\exists f: x \in \overline{L_1} \iff f(x) \in \overline{L_2})\\
+	\implies &\overline{L_1} \leq \overline{L_2}
+\end{align*}
