@@ -1,0 +1,41 @@
+Gegeben sei die Sprache
+\[
+	B_1 = \{ \langle M \rangle \mid M \text{ akzeptiert mindestens ein Wort} \}
+\]
+Diese Sprache ist ebenfalls \textbf{nicht rekursiv}.
+
+\begin{proof} mit dem Satz von Rice.
+Sei
+\[
+\mathcal{S} = \{f_M \mid \exists w \in \{0, 1\}^* : f_M(w) = 1\}
+\]
+
+Dann ist $\mathcal{S}$ nicht leer, denn eine passende Funktion $f_M$ existiert,
+zum Beispiel die Funktion zur Turingmaschine, die alle Wörter aus $\{0, 1\}^*$
+akzeptiert. Außerdem ist $\mathcal{S} \neq \mathcal{R}$, da z.B. die Funktion
+zur Turingmaschine, die alle Wörter verwirft, nicht in $\mathcal{S}$ ist.
+
+Damit ist
+\begin{align*}
+	L(\mathcal{S}) &= \{\langle M \rangle \mid M
+		\text{ berechnet eine Funktion aus }\mathcal{S}\} \\
+	&= \{\langle M \rangle \mid M \text{ akzeptiert mindestens ein Wort}\} \\
+	&= B_1
+\end{align*}
+und somit ist $B_1$ nach Satz von Rice nicht entscheidbar.
+\end{proof}
+
+Allerdings ist auch $B_1$ \textbf{rekursiv aufzählbar}.
+
+\begin{proof}
+Wir konstruieren wieder einen Aufzähler, der für $i = 1, 2, 3, \dots$
+alle Wörter $\{w_1, \dots, w_i\}$ für $i$ Schritte simuliert, wobei diese Wörter
+als Gödelnummern mit anschließenden Eingabewörtern betrachtet werden und
+ungültige Gödelnummern zuvor verworfen bzw. ignoriert werden. Wenn eine dieser
+Simulationen akzeptiert, wird die entsprechende Gödelnummer auf dem Drucker
+ausgegeben (wobei das dazugehörige Eingabewort natürlich nicht mit ausgegeben
+wird).
+
+Dieser Aufzähler gibt also alle Gödelnummern aus $B_1$ aus. Da ein Aufzähler
+existiert, ist $B_1$ offentsichtlich rekursiv aufzählbar.
+\end{proof}
