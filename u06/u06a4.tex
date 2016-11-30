@@ -1,0 +1,32 @@
+Sei $f : \mathbb{N}^2 \rightarrow \mathbb{N}, f(x_1, x_2) = x_1^{x_2}$.
+Folgendes WHILE-Programm berechnet $f$:
+
+\setlength{\jot}{0pt}
+\noindent\begin{flalign*}
+&x_0 := x_0 + 1; &\\
+&\textrm{WHILE } x_2 \neq 0 \textrm{ DO} \\
+&\qquad  x_3 := x_0 + 0; \\
+&\qquad  x_0 := x_5 + 0; \\
+&\qquad  \textrm{WHILE } x_3 \neq 0 \textrm{ DO} \\
+&\qquad  \qquad  x_4 := x_1 + 0; \\
+&\qquad  \qquad  \textrm{WHILE } x_4 \neq 0 \textrm{ DO} \\
+&\qquad  \qquad  \qquad  x_0 := x_0 + 1; \\
+&\qquad  \qquad  \qquad  x_4 := x_4 - 1 \\
+&\qquad  \qquad  \textrm{END}; \\
+&\qquad  \qquad  x_3 := x_3 - 1 \\
+&\qquad  \textrm{END}; \\
+&\qquad  x_2 := x_2 - 1 \\
+&\textrm{END}
+\end{flalign*}
+
+Zuerst wird $x_0$ mit $1 = (x_1)^0$ inititalisiert. Anschließend wird in der
+äußersten Schleife $x_2$-mal $x_1$ mit $x_0$ multipliziert, wobei das Ergebnis
+jedesmal wieder in $x_0$ geschrieben wird. Also wird in jedem Durchlauf
+$x_0 := x_1 \cdot x_1^{x_2 - 1}$ gesetzt, wobei $x_1^{x_2 - 1}$ eben genau der
+vorige Wert von $x_0$ ist. Dabei wird $x_2$ in jeder Runde heruntergezählt.
+
+In der zweiten Schleife wird dann $x_0$ mit $x_1$ multipliziert. Dazu wird $x_1$
+$x_0$-mal. Die Addition wird direkt auf $x_0$ durchgeführt, weswegen $x_0$
+zuerst in eine neue Variable geschrieben werden muss. Ebenso wird $x_1$ vorher
+in eine neue Variable kopiert, da der ursprüngliche Wert für die weiteren
+Schleifendurchläufe erhalten bleiben muss.
