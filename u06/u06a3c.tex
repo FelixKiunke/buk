@@ -1,1 +1,24 @@
-Weiß nicht
+Da das Alphabet nur aus einem Zeichen besteht, korrespondiert eine Folge genau
+dann, wenn das obere und untere Wort gleich lang sind.
+Wir weisen jedem Domino die Differenz der Länge seines oberen und unteren Wortes
+zu, also beispielsweise $d(\left[\frac{xx}{xxxxx}\right]) = -3$. Eine
+korrespondierende Folge besteht also offensichtlich aus Dominos, deren
+Differenzen summiert 0 ergeben.
+
+Wir unterscheiden also zwei Fälle:
+
+Wenn für alle Dominos $x$ $d(x) < 0$ oder für alle Dominos $x$ $d(x) > 0$ gilt,
+verwerfen wir. Das PKP ist dann nicht lösbar, da jede Folge von Dominos eine
+summierte Differenz von höchstens $-n$ im ersten Fall (mit $n =$ Länge der
+Folge) bzw. $n$ im zweiten Fall hat.
+
+Ansonsten akzeptieren wir. Wenn ein Domino $x$ mit $d(x) = 0$ existiert, dann
+ist die Folge, die nur $x$ enthält, eine Lösung. Ansonsten lassen sich zwei
+Dominos $x$ und $y$ wählen mit $d(x) < 0$ und $d(y) > 0$. Wenn man nun
+$x$ $d(y)$-mal legt und danach $y$ $-d(x)$-mal, ist die summierte Differenz
+dieser Folge $d(x)*d(y) + d(y)*(-d(x)) = d(x)*d(y) - d(y)*d(x) = 0$. Damit
+korrespondiert diese Folge und es existiert eine Lösung für das PKP. Es ist also
+lösbar.
+
+Es lässt sich also nur durch Betrachten der Dominos feststellen, ob das PKP
+lösbar ist. Damit ist diese PKP-Variante ebenfalls entscheidbar.\hfill$\square$
