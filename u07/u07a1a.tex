@@ -1,0 +1,42 @@
+\textbf{RAM-Befehl}: MULT 1 ($c(0) := c(0) \cdot c(1)$)
+
+\textbf{Äquivalentes RAM-Programm} mit eingeschränktem Befehlssatz
+(mit $l = k + 1$, $m = k + 2$ der Lesbarkeit halber):
+
+\setlength{\jot}{0pt}
+\noindent\begin{flalign*}
+ &&\textbf{Anmerkungen}&\\
+ 1&\quad \textrm{STORE } k & \text{Speichere ersten Faktor in $c(k)$} &\\
+ 2&\quad \textrm{GOTO } 15 & \text{Springe zur Speicherung von $c(1)$ in $c(l)$
+	und Prüfung $c(k) \neq 0$} \\
+ 3&\quad \textrm{GOTO } 10 & \text{Äußere Schleife: Springe zur Prüfung $c(l)
+	\neq 0$} \\
+ 4&\quad \textrm{LOAD }  m & \text{Innere Schleife: $c(k) > 0$ und $c(l) > 0$,
+	also addiere $1$ auf $c(m)$}\\
+ 5&\quad \textrm{CADD }  1 \\
+ 6&\quad \textrm{STORE } m \\
+ 7&\quad \textrm{LOAD }  l & \text{Subtrahiere $1$ von $c(l)$}\\
+ 8&\quad \textrm{CSUB }  1 \\
+ 9&\quad \textrm{STORE } l \\
+10&\quad \textrm{LOAD }  l & \text{Prüfe, ob $c(l)$ > 0, wenn ja, wiederhole die
+	„innere Schleife“}\\
+11&\quad \textrm{IF } c(0) \neq 0 \textrm{ THEN GOTO } 4 \\
+12&\quad \textrm{LOAD }  k & \text{Äußere Schleife: Subtrahiere $1$ von
+	$c(k)$}\\
+13&\quad \textrm{CSUB }  1 \\
+14&\quad \textrm{STORE } k \\
+15&\quad \textrm{LOAD }  1 & \text{Setze $c(l)$ zurück auf $c(1)$}\\
+16&\quad \textrm{STORE } l \\
+17&\quad \textrm{LOAD }  k & \text{Prüfe, ob $c(k)$ > 0, wenn ja, wiederhole die
+	„äußere Schleife“}\\
+18&\quad \textrm{IF } c(0) \neq 0 \textrm{ THEN GOTO } 3 \\
+19&\quad \textrm{LOAD }  m & \text{Lies das Ergebnis aus $c(m)$ in $c(0)$}
+\end{flalign*}
+
+Das Programm besteht aus zwei Schleifen. In der äußeren wird der erste Faktor
+$c(0)$ in $c(k)$ heruntergezählt und somit die innere Schleife $c(0)$-mal
+ausgeführt. In der inneren Schleife wird der zweite Faktor $c(1)$ in $c(l)$
+heruntergezählt und jedesmal 1 auf $c(m)$ unseren „Akkumulator“ addiert, also
+insgesamt $c(m) := c(m) + c(l)$.  Damit wird $c(l)$ $c(0)$-mal addiert, also ist
+nach dem letzten Durchlauf der äußeren Schleife $c(m) = c(0) \cdot c(1)$. Zum
+Schluss wird das Ergebnis aus $c(m)$ in das Akkumulatorregister $c(0)$ geladen.
