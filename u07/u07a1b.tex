@@ -1,0 +1,17 @@
+Idee: man legt für jedes der $k-1$ Register, die von $0$ verschieden sind, einen eigenen Codeabschnitt an, der dieses Register lädt. $c(k-1)$ ist das letzte Register, in dem ein Wert ungleich 0 stehen kann. Wenn in $c(i) \geq k$, wird nichts geladen.
+
+1: LOAD i \\
+2: CSUB 1 \\
+3: IF c(0) $\neq$ 0 THEN GOTO 6 \\
+4: LOAD 1 \\
+5: GOTO $4k + 1$ \\
+\vdots \\
+$4 \cdot l + 2$: CSUB 1 \\
+$4 \cdot l + 3$: IF c(0) $\neq$ 0 THEN GOTO $4 \cdot (l + 1) + 2$ \\
+$4 \cdot l + 4$: LOAD $l$ \\
+$4 \cdot l + 5$: GOTO $4k + 1$ \\
+\vdots \\
+$4(k-1) + 2$: CSUB 1\\
+$4(k-1) + 3$: IF c(0) $\neq$ 0 THEN GOTO $4k + 1$ \\
+$4(k-1) + 4$: LOAD $k-1$ \\
+$4k + 1$: \textit{hier geht das Programm weiter}\\
