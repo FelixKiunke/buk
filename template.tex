@@ -39,20 +39,6 @@
 \rule[0.1ex]{\textwidth}{1pt}
 \end{center}
 
-$x_0 := x_0 + 1$\\
-$\text{WHILE } x_2 \neq 0 \text{ DO}\\
-x_3 := x_0 + 0;\\
-x_0 := x_5 + 0;\\
-\text{WHILE } x_3 \neq 0 \text{ DO}\\
-x_4 = x_1 + 0;\\
-\text{WHILE } x_4 \neq 0 \text{ DO}\\
-x_0 := x_0 + 1;\\
-x_4 := x_4 - 1;\\
-\text{END}\\
-x_3 := x_3 - 1;\\
-\text{END}\\
-x_2 := x_2 - 1;\\
-\text{END}$
-\\ \ \\
-Idee: Es wird $\overbrace{((x_1 \cdot x_1) \cdot x_1) \cdot x_1}^{x_2 \text{ mal}}$ ausgerechnet. Die beiden inneren Schleifen multiplizieren $x_1$ mit $x_0$ und schreiben das Ergebnis in $x_0$. Man multipliziert also $x_1$ mit dem Ergebnis der letzten Multiplikation. Dies wird $x_2$ oft gemacht. Es muss noch darauf geachtet werden, dass $x_0$ vor jeder neuen Multiplikation zurückgesetzt wird, da sich sonst die Ergebnisse aller einzelnen Multiplikationen addieren würden, und das Ergebnis zu groß würde.
+% EXERCISES
+
 \end{document}
