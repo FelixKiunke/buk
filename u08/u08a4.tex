@@ -1,0 +1,12 @@
+NP $\subseteq$ NP':\\
+Sei L $\in$ NP, d.h. es existiert eine NTM M mit L(M)=L und Polynom p mit $t_M(n) \leq p(n)$.\\ \ \\
+Man konstruiere eine NTM M', welche die Berechnung nach p(n) (für n=|w|) Schritten abbricht und
+sich sonst wie M verhält. Es gilt $t^\prime_{M^\prime} \leq p(n)$, da es auf keinem Wort der Länge n einen Pfad länger p(n)
+geben kann. Der kürzeste akzeptierende Pfad bleibt hierbei erhalten, da er nicht länger als p(n) sein kann.
+Also gilt $L(M^\prime)=L$ und deshalb L $\in$ NP'.
+\\ \ \\
+NP' $\subseteq$ NP:\\
+Sei L $\in$ NP, d.h. es existiert eine NTM M' mit $L(M^\prime)=L$ und Polynom p mit $t'_{M'}(n) \leq p(n)$.\\
+Dann ist $t_{M'} \leq p(n)$, da alle Pfade polynomiell beschränkt sind, insbesondere auch der kürzeste akzeptierende. Daher L $\in$ NP.\\
+\\ \ \\
+NP' $\subseteq$ NP $\land$ NP $\subseteq$ NP' $\implies$ NP' = NP.

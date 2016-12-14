@@ -1,0 +1,25 @@
+Im folgenden wird gezeigt, dass es eine Abbildung $V$ und ein Polynom $p$ gibt, sodass gilt:
+
+\begin{center}
+$x \in \textsc{3-Colorability} \iff \exists |y| \leq p(|x|): V \text{ akzeptiert } y\#x.$
+\end{center}
+
+Ein Graph mit $n$ Knoten kann mit einer Adjazenzmatrix in $n^2$ Zeichen aus ${0, 1}$ kodiert werden, d.h. $|x|=\mathcal{O}(n^2)$. Das Zertifikat der Lösung sei eine Liste an Farben in der Reihenfolge der Knoten. Bei 3 Farben kann jede Farbe mit 2 Bits kodiert werden: 00, 11 oder 01. Es gilt daher $|y|=\mathcal{O}(n)$.
+
+\begin{center}
+$p(x) = x \text{, da } x \leq x^2 \quad \forall x \in \mathbb{N}$
+\end{center}
+
+Verifikation der Lösung, die durch $y$ beschrieben wird:
+Sei $y_n \in {00, 11, 01}$ der Farbwert des n-ten Knotens und $x_{i, j} \in {0, 1}$ ein Element aus der Adjazenzmatrix.
+\\ \ \\
+for $i=1..n$ do\\
+\quad for $j=1..n$ do\\
+\quad \quad if $x_{i, j} = 1 \text{ and } i > j$\\
+\quad \quad \quad if $y_i = y_j$ REJECT\\
+\quad \quad end if\\
+\quad end for\\
+end for
+ACCEPT
+\\ \ \\
+Da dieser Algorithmus $n^2$ viele Schritte benötigt und Lesen aus y mit polynomialem Zeitverlust mit einem zweiten Band simuliert werden kann, ist dies ein Algorithmus in Polynomialzeit.
