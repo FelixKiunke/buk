@@ -1,0 +1,47 @@
+\aufgabenteil{(a)}
+Der linke Graph ist in 2-COLORABILITY enthalten. Eine Lösung ist: \\
+Schwarz: 3, 4, 6 \\
+Weiß: 1, 2, 5, 7.
+
+Der rechte Graph ist nicht enthalten. Dieser Graph enthält einen Kreis mit
+ungerader Knotenanzahl (1, 3, 2, 4, 7). Dieser Kreis ist offensichtlich nicht
+2-färbbar, also ist der gesamte Graph ebenfalls nicht färbbar.
+
+\aufgabenteil{(b)}
+Wir entwerfen folgenden Algorithmus: 
+
+\begin{itemize}
+\item Starte an einem beliebigen ungefärbten Knoten und färbe diesen weiß.
+      Merke, dass der zuletzt eingefärbte Knoten weiß ist.
+\item Wähle einen beliebigen Nachbarknoten $K$ des gewählten Knotens. Hat dieser
+      dieselbe Farbe, verwirf, denn es gibt offensichtlich keine 2-Färbung.
+	  Hat dieser eine andere Farbe, fahre mit einem anderen Nachbarn (sofern
+	  vorhanden) fort. Ist $K$ noch ungefärbt, fahre mit $K$ fort.
+\item Färbe $K$ mit dem „Gegenteil“ der gemerkten Farbe und merke die für $K$
+      verwendete Farbe.
+\end{itemize}
+
+Diese Tiefensuche muss solange durchgeführt werden, wie es noch ungefärbte
+Knoten gibt. Wenn alle Knoten eingefärbt sind, ist dies eine gültige 2-Färbung
+und die Eingabe kann akzeptiert werden.
+
+\textbf{Korrektheit:} Bei Akzeptanz ist die Korrektheit klar: Jeder neu
+eingefärbte Knoten ist korrekt eingefärbt, da für alle Nachbarn geprüft wird, ob
+diese schon die selbe Farbe haben und ansonsten verworfen wird. Außerdem werden
+die noch nicht eingefärbten Nachbarknoten in einer anderen Farbe eingefärbt und
+„passen“ somit auch.
+
+Die Einfärbung im Algorithmus ist bis auf Umkehrung der Farben eindeutig. In
+jedem Schritt ist der bisher eingefärbte Teilgraph gültig 2-gefärbt. Wenn nun
+zwei Nachbarn in Schritt 2 die gleiche Farbe haben, sind sie (da eine
+Tiefensuche durchgeführt wird) auch anderweitig (über andere Knoten) verbunden.
+Das bedeutet, dass die Farbe dieser beiden bereits eingefärbten Knoten ebenfalls
+bis auf Umkehrung eindeutig ist. Damit gibt es also keine andere gültige
+Färbung, durch die die beiden Nachbarn nicht die gleiche Färbung erreichen. Also
+ist der Algorithmus auch im „Verwerf-Fall“ korrekt
+
+\textbf{Laufzeit:} Die Tiefensuche ist in $\mathcal{O}(|V| + |E|)$ durchführbar
+mit $V =$ Knotenmenge und $E =$ Kantenmenge. Da die Kantenmenge durch die
+Knotenmenge beschränkt ist, ist die Laufzeit also (grob abgeschätzt)
+$\mathcal{O}(|V|^3)$. Die Überprüfung der Nachbarn ist in $\mathcal{O}(|V|)$,
+also liegt die Gesamtlaufzeit in $\mathcal{O}(|V|^4)$ und damit in $P$
