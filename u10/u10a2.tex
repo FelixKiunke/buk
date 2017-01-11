@@ -1,0 +1,8 @@
+1. \textsc{3-Partition} ist in NP, da die drei Mengen an Indizes als Verifikation für die Lösung angegeben werden können.\\
+2. Als NP-Vollständige Sprache wird \textsc{Partition} gewählt.\\
+3. Reduktionsabbildung: Man füge der Eingabe $a_1, \dots, a_N$ noch $\lfloor A/2 \rfloor$ hinzu, wobei $A=\sum_{i=1}^N a_i$.\\
+4. Sowohl $|w|$ als auch Aufsummieren der Zahlen liegt in $\mathcal{O}(N \cdot log(\max_{i \in [1, N]} a_i))$. Daher ist der Algorithmus polynomiell.\\
+5. Korrektheit\\
+$a_1, \dots, a_N$ hat Lösung bzgl. \textsc{Partition} $\implies$ Es gibt zwei Teilmengen, welche sich jeweils zu $A/2$ aufsummieren $\implies$ $A$ ist gerade $\implies$ Diese beiden Teilmenge sowie die neu eingefügte Zahl $\lfloor A/2 \rfloor = A/2$ summieren sich alle zu $A/2$. $\implies$ Da die Gesamtsumme der Zahlen für \textsc{3-Partition} $\frac{3}{2}$ ist, sind diese drei Teilmengen eine Lösung.
+\\ \ \\
+$a_1, \dots, a_N, \lfloor A/2 \rfloor$ hat Lösung bzgl. \textsc{3-Partition} $\implies$ $A$ ist gerade, da $a_1, \dots, a_N = A$ und sich deshalb zwei Partitionen finden müssen, die den Wert $A/2$ haben. $\implies$ hat Lösung bzgl. \textsc{Partition}

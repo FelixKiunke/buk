@@ -1,3 +1,32 @@
 \aufgabenteil{(a)}
 
+\begin{framed}
+\textbf{MSS-E}\\ \ \\
+\textbf{Eingabe:} $m$ Maschinen, $n$ Jobs mit Laufzeiten $p_1, \dots, p_n$, Schranke $b$ für die beste Lösung\\ \ \\
+\textbf{zulässige Lösungen:} $1$ wenn es eine Zuteilung $s: \{1, \dots, n\} \to \{1, \dots, m\}$ der Jobs auf die Maschine gibt, wobei $\max_{1\leq i\leq m} \sum_{j:s(j)=i} p_j \leq b$, $0$ sonst.
+\end{framed}
+
 \aufgabenteil{(b)}
+Die Eingabe von \textsc{Subset-Sum} sei $a_1, \dots, a_N \in \mathbb{N}$ und $b \in \mathbb{N}$.\\ \ \\
+Die Reduktionsabbildung generiert folgende Eingabe an \textbf{MSS-E}:\\
+$2$ Maschinen, $N + 2$ Jobs mit Laufzeiten $a_1, \dots, a_N, 2A - b, A + b$ und Schrank $2A$ wobei
+$A=\sum_{i=1}^N a_i$. Diese Abbildung ist \textit{trivialerweise} polynomiell.\\ \ \\
+
+Beweis \textit{(Korrektheit)} \\ \ \\
+Eingabe Lösung von \textsc{Subset-Sum} $\implies$ Abbildung auf Lösung von \textbf{MSS-E}:\\
+Wenn es eine Teilmenge der Zahlen $a_1, \dots, a_N$ mit Summenwert $b$ gibt, so gibt es auch Menge an Jobs, die hintereinander $b$ lange laufen.\\
+$\implies$
+Wir können diese zusammen mit dem Job, der $2A - b$ lange läuft, auf einer der beiden Maschinen laufen lassen.\\
+$\implies$
+Diese Maschine läuft $2A$ lang.\\
+$\implies$ Da sich die Gesamtlänge aller Jobs zu $4A$ aufaddiert, muss die andere Maschine auch $2A$ lange laufen\\
+$\implies$ Die Schranke wird nicht überschritten\\
+$\implies$ Eingabe Lösung von \textbf{MSS-E}
+\\ \ \\
+Eingabe Lösung von \textbf{MSS-E} $\implies$ Eingabe Lösung von \textsc{Subset-Sum}:\\
+Keine der beiden Maschinen läuft länger als $2A$\\
+$\implies$ Beide Maschinen laufen $2A$ lang, da insg. alle Jobs $4A$.\\
+$\implies$ Der Job, welcher $A + b$ lange läuft, läuft nicht auf der selben Maschine, wie der $2A - b$-Job.\\
+$\implies$ Es gibt Jobs, die Zusammen $b$ lange laufen\\
+$\implies$ Es gibt Zahlen, die sich zu $b$ aufsummieren\\
+$\implies$ Eingabe Lösung für \textsc{Subset-Sum}
