@@ -1,0 +1,16 @@
+\aufgabenteil{(a)}
+Sei $G$ eine Kodierung der Adjazanzmatrix des Graphen, wobei in der Matrix entweder $N$ steht (keine Kante), oder das binär kodierte Gewicht der Kante.\\
+$y$ bestimme nun eine Teilmenge des durch $G$ dargestellten Graphen. $y$ ist eine kodierte Matrix, deren Elemente entweder $0$ (im Spannbaum nicht enthalten) oder $1$ (im Spannbaum enthalten) sind. $|y| < |(G, c)|$, da jedes Element von $G$ mindestens einstellig ist, also $|y| \leq |G|$. Als Polynom kann daher $p(x)=x$ gewählt werden.\\ \ \\
+Der Algorithmus $V$ muss nun die Kreisfreiheit und Summe der durch $y$ angegebenen Lösung bestimmen.\\
+Es wird eine Tiefensuche auf den von $y$ kodierten Graphen ausgeführt. Dabei werden die Kantengewichte aus $G$ addiert, um am Ende schauen zu können, ob $c$ erreicht wird. Wenn die Tiefensuche einen Zykel erkennt, wird verworfen. Wenn die Tiefensuche nicht alle Knoten aus $y$ erreicht, wird verworfen, weil der Graph nicht zusammenhängend ist und folglich kein valider Spannbaum ist. Ist das alles nicht der Fall und die Summe der Kantengewichte tatsächlich $\geq c$, wird akzeptiert.\\ \ \\
+Komplexität: Tiefensuche benötigt $|V|+|E|=\mathcal{O}(|V|^2)$ Schritte. Überprüfen, ob alle Knoten erreicht wurden, ist in linearer Zeit möglich. Ergo ist der Algorithmus polynomiell.
+
+\aufgabenteil{(b)}
+$y$ sei die binäre Kodierung einer Zahl ungleich 1 oder $w$, durch die sich $w$ restfrei teilen lässt. Diese Zahl muss kleiner sein, die Kodierung lässt sich daher wieder durch $p(x)=x$ abschätzen.\\
+Der Algorithmus dividiert $w$ durch $y$. Wenn kein Rest bleibt akzeptiert der Algorithmus, sonst verwirft er.\\
+Schriftliche Division hat eine lineare Komplexität bezüglich der Länge der Zahlen.
+
+\aufgabenteil{(c)}
+Seien $G_1$ und $G_2$ kodierte Adjazenzmatrizen der jeweiligen Graphen. Das Zertifikat $y$ sei nun eine Permutation der Knoten von $G_1$.\\
+$|y| \leq G_1\#G_2$, da die Permutation aus $|V|$ Vertauschungen besteht, welche jeweils mit $log(|V|)$ Zeichen kodiert werden können.\\
+Nun muss der Algorithmus verifizieren, dass durch Vertauschungen der Spalten und Zeilen der Matrix von $G_1$ die Matrix von $G_2$ entsteht. Dies benötigt $3\cdot|V|^2$ Schritte (Für jede Vertauschung eine Spalte und eine Zeile mit jeweils $|V|$ Einträgen und abschließendes Durchlaufen der Matrix mit Gesamtgröße $|V|^2$)

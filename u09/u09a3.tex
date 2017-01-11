@@ -1,0 +1,9 @@
+1. $\textsc{DoubleSat} \in NP$, da es einen Polynomialzeitverifizierer gibt, wobei das Zertifikat zwei Lösungen der Formel ist.\\
+2. Als Sprache für die Reduktion wird \textsc{Sat} gewählt.\\
+3. Reduktionsabbildung:\\
+Es soll eine Instanz von \textsc{Sat} auf \textsc{DoubleSat} abgebildet werden.\\
+Die Instanz von \textsc{Sat} wird für jede Klausel um ein Literal erweitert, die nicht-negiert nur in ihrer Klausel steht, und nirgends sonst.\\
+4. Dies kann sehr einfach in polynomieller Zeit berechnet werden, da die Änderung linear in der Anzahl der Klauseln ist.\\
+5. Korrektheit:\\
+$x \in \textsc{Sat} \implies$ es gibt erfüllende Belegung $\implies f(x)$ hat zwei erfüllende Belegungen (die eigentliche und die, bei der alle neuen Literale positiv belegt sind) $\implies f(x) \in \textsc{DoubleSat}$.\\
+$x \notin \textsc{Sat} \implies$ es gibt keine erfüllende Belegung $\implies f(x)$ hat eine erfüllende Belegung (die, bei der alle Literale positiv belegt sind) $\implies f(x) \notin \textsc{DoubleSat}$.

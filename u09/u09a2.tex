@@ -1,0 +1,6 @@
+\aufgabenteil{(a)}
+Zuerst: Binäre Suche mit Hilfe der von BPP-E im Bereich $1$ bis $N$ (Anzahl der Objekte). Dadurch wird das minimale $k$ gefunden.\\
+Es werden so lange Elemente aus der Menge entfernt, bis BPP-E meldet, dass ein Bin weniger benötigt wird. Die entfernten Elemente liegen im Resultat in einem gemeinsamen Bin. Dies wird so lange wiederholt, bis die Menge leer ist.\\ \ \\
+Laufzeit: $p(N) \cdot \lceil log(N) \rceil + N \cdot (\sum_{i=1}^N p(N)-i) \leq p(N)^4 + p(N)\cdot \lceil log(N) \rceil \leq p(N)^4 + p(N)\cdot N$\\
+
+\aufgabenteil{(b)}
