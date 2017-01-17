@@ -1,0 +1,20 @@
+Reduktionsabbildung: Jede Klausel  $(a \lor b \lor c)$ der Eingabe wird transformiert zu
+\begin{center}
+$(*)\qquad(a \lor b \lor \bar{x}) \land (a \lor c \lor \bar{y}) \land (c \lor b \lor \bar{z}) \land (x \lor y \lor z)$
+\end{center}
+wobei $x, y, z$ o.B.d.A. keine Literale in der Eingabe sind. Dies ist sicherlich polynomiell (linear in der Anz. der Klauseln).
+\\ \ \\
+Beweis. \textit{Korrektheit}\\ \ \\
+$w \in \textsc{3SAT}\\ \implies$
+In jeder Klausel $(a \lor b \lor c)$ von $w$ kommt mindestens ein wahres Literal vor\\$\implies$
+Es können $x, y, z$ so gewählt werden, dass im Ausdruck $(*)$ in jeder Klausel mindestens ein Literal wahr und ein Literal falsch auftritt:\\
+\null\quad (a) Sind mehr als ein Literal von $a, b, c$ wahr, so setze $x$ und $y$ jeweils auf $wahr$ und $z$ auf $falsch$\\
+\null\quad (b) Ist nur eines wahr, so setze $x$ auf $falsch$, wenn es $c$ ist, $y$ auf $falsch$, wenn es $b$ ist, und $z$ auf $falsch$, wenn es $a$ ist.\\$\implies$
+Jede Klausel von $(*)$ hat mind. ein wahres und mind. ein falsches Literal, insb. ist die Belegung dann erfüllend\\$\implies
+w \in \textsc{Not-all-equal-SAT}$\\ \ \\
+$w \notin \textsc{3SAT}\\ \implies$
+In mind. einer Klausel $(a \lor b \lor c)$ von $w$ kommt kein wahres Literal vor\\$\implies$
+$(*)$ könnte dann nur erfüllend gemacht werden, wenn $x, y, z$ jeweils auf $falsch$ gesetzt werden, dies ist wegen der letzten Klausel von (*) allerdings nicht erlaubt\\$implies$
+Es gibt keine erfüllende Belegung von $(*)\\ \implies
+w \notin \textsc{Not-all-equal-SAT}$\\ \ \\
+Es gilt daher $\textsc{3SAT} \leq_p \textsc{Not-all-equal-SAT}$.
