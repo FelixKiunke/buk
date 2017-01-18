@@ -1,0 +1,26 @@
+Wenn \textsc{LongestPath} in $\P$ liegt, so können wir, um \textsc{HC} zu lösen,
+auf die Eingabe von \textsc{HC} $G = (V, E)$ \textsc{LongestPath} mit
+$b = |V| - 1$ ausführen. Wenn kein Pfad der Länge $b$ existiert, kann es auch
+keinen Hamiltonkreis geben. Wenn einer existiert, so kann es einen Hamiltonkreis
+geben, wenn eine Kante die zwei Endknoten des Pfades verbindet. Um das in
+polynomieller Zeit zu testen, gehen wir folgendermaßen vor:
+
+Für jede Kante $e \in E$: Entferne $e$ aus dem Graphen und füge zwei neue Knoten
+$v_1$ und $v_2$ ein. Füge außerdem zwei neue Kanten $e_1$ und $e_2$ hinzu, die
+zwischen den beiden Endknoten von $e$ und $v_1$ bzw. $v_2$ verlaufen. Führe
+\textsc{LongestPath} auf $G' = (V \cup \{v_1, v_2\}, (E \setminus \{e\}) \cup \{e_1, e_2\})$
+mit $b' = b + 2$ durch. Wenn nun ein Pfad der Länge $b'$ existiert, so muss er
+die beiden Knoten $v_1$ und $v_2$ enthalten. Da diese Knoten nur über eine Kante
+mit dem restlichen Graphen verbunden sind, müssen sie Endknoten sein. Also
+existiert auch ein Pfad der Länge $b$ in $G$, dessen Endknoten die beiden Enden
+von $e$ sind. Da wir die Kante $e$ in $G'$ entfernt haben, können wir sie auch
+wieder zum Pfad hinzufügen, um ihn zu schließen und zu einem Hamiltonkreis zu
+machen. Wir geben also Ja zurück. Wenn kein Pfad der Länge $b'$ existiert,
+fahren wir mit der nächsten Kante fort. Wenn wir alle Kanten abgearbeiten haben,
+geben wir Nein zurück, dann existiert kein Hamiltonkreis in $G$.
+
+Da wir \textsc{LongestPath} höchstens $|E| + 1$-mal durchführen und alle anderen
+Schritte offensichtlich auch polynomiell sind, können wir \textsc{HC} in
+Polynomialzeit berechnen, wenn \textsc{LongestPath} in $\P$ liegt. Da \textsc{HC}
+in $\NP$ liegt, kann \textsc{LongestPath} also auch nicht in $\P$ liegen (unter
+der Annahme, dass $\P \neq \NP$). \hfill\(\square\)
